@@ -1,0 +1,23 @@
+<% include includes/header.ejs %>
+
+<form action="/users/login" class="form" method="post" >
+    <div class="form-header">
+        <h3>Welcome back</h3>
+        <p>Sign in to your account to continue</p>
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="You Email Address Here" required>
+    </div>
+
+    <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Your Password Here" minlength="8" maxlength="25" required>
+    </div>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <button class="btn btn-primary btn-lg" type="submit">Login</button>
+
+</form>
+
+<% include includes/footer.ejs %>

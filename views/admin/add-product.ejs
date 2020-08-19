@@ -1,0 +1,48 @@
+<%- include('../includes/header') %>
+<form action="/admin/add-product" class="form" method="post" enctype="multipart/form-data" >
+    <div class="form-header">
+        <h3>Create A Product</h3>
+        <p>Add product to database.</p>
+    </div>
+
+    <div class="form-group">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" name="title" id="title" placeholder="Title" required>
+    </div>
+
+    <div class="form-group">
+        <label for="category" class="form-label">Category</label>
+        <select name="category" id="category" class="form-control" required>
+            <option value="audio">Audio</option>
+            <option value="video">Video</option>
+        </select>
+
+    </div>
+
+    <div class="form-group">
+        <label for="file" class="form-label">Upload</label>
+        <input type="file" class="form-control" name="file" id="file" placeholder="Upload file" required>
+    </div>
+
+    <div class="form-group">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" name="description" id="description" cols="30" rows="4" placeholder="Description" required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" class="form-control" name="price" id="price" placeholder="Price" step="0.01" required>
+    </div>
+
+
+    <div class="form-group">
+        <label for="rate" class="form-label">Rate</label>
+        <input type="number" class="form-control" name="rate" id="rate" placeholder="Rate" step="0.01"  required>
+    </div>
+
+
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <button class="btn btn-primary btn-lg" type="submit">Add Product</button>
+
+</form>
+<%- include('../includes/footer') %>

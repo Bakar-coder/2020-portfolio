@@ -19,6 +19,11 @@ const { User } = require("./models/User");
 const port = process.env.PORT || 5000;
 const app = express();
 
+if (!config.get("jwtPrivateKey")) {
+  console.error("No secret key provided...................");
+  process.exit(1);
+}
+
 const home = require("./routes");
 const users = require("./routes/user");
 const admin = require("./routes/admin/products");
@@ -56,7 +61,7 @@ app.use(
 app.use(
   session({
     name: "SID",
-    secret: "078ewqeewrrerythgfhfgfhg",
+    secret: config.get("jwtPrivateKey"),
     saveUninitialized: false,
     resave: false,
     store: sessionStore,

@@ -19,22 +19,17 @@ const { User } = require("./models/User");
 const port = process.env.PORT || 5000;
 const app = express();
 
-if (!config.get("jwtPrivateKey")) {
-  console.error("No secret key provided...................");
-  process.exit(1);
-}
-
 const home = require("./routes");
 const users = require("./routes/user");
 const admin = require("./routes/admin/products");
 
 const sessionStore = new sessionStorage({
   uri: db(),
-  collection: "sessions"
+  collection: "sessions",
 });
 
 const accessLogStream = fs.createWriteStream(join(__dirname, "access.log"), {
-  flags: "a"
+  flags: "a",
 });
 
 app.use(express.urlencoded({ extended: false }));
@@ -45,9 +40,9 @@ app.set("view engine", "ejs");
 app.use(
   morgan("combined", {
     stream: accessLogStream,
-    skip: function(req, res) {
+    skip: function (req, res) {
       return res.statusCode < 400;
-    }
+    },
   })
 );
 app.use(
@@ -55,16 +50,16 @@ app.use(
     limits: { fileSize: 1024 * 1024 * 1024 },
     useTempFiles: true,
     safeFileNames: true,
-    preserveExtension: true
+    preserveExtension: true,
   })
 );
 app.use(
   session({
     name: "SID",
-    secret: config.get("jwtPrivateKey"),
+    secret: "078ewqeewrrerythgfhfgfhg",
     saveUninitialized: false,
     resave: false,
-    store: sessionStore
+    store: sessionStore,
   })
 );
 app.use(csrf());
@@ -72,10 +67,10 @@ app.use(flash());
 app.use(helmet());
 app.use(compression());
 
-app.use(async function(req, res, next) {
+app.use(async function (req, res, next) {
   if (!req.session.user) return next();
   if (req.session.cookie.expires) {
-    req.session.destroy(function(ex) {
+    req.session.destroy(function (ex) {
       if (ex) return req.flash("error", ex);
       res.redirect("/");
     });
@@ -90,7 +85,7 @@ app.use(async function(req, res, next) {
   }
 });
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.locals.isAuthenticated = req.session.isAuthenticated;
   res.locals.user = req.user;
   res.locals.csrfToken = req.csrfToken();
@@ -103,16 +98,16 @@ app.use(function(req, res, next) {
 app.use("/", home);
 app.use("/users", users);
 app.use("/admin", admin);
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   const context = {
     title: "404 | Page Not Found.",
-    path: "/"
+    path: "/",
   };
   res.render("404", context);
   next();
 });
 
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   if (err.code !== "EBADCSRFTOKEN") return next(err);
   res.status(403);
   res.send("form tampered with");
@@ -126,4 +121,4 @@ mongoose
       console.log(`Server started on port: ${port}_____________________`)
     );
   })
-  .catch(ex => console.error("Database Connection Error! -", ex));
+  .catch((ex) => console.error("Database Connection Error! -", ex));

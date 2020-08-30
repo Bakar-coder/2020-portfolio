@@ -91,3 +91,7 @@
 ::1 - - [11/Jun/2020:04:30:15 +0000] "POST /admin/add-product HTTP/1.1" 500 - "http://localhost:5000/admin/add-product" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 Safari/537.36"
 ::1 - - [18/Aug/2020:15:06:20 +0000] "GET / HTTP/1.1" 500 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
 ::1 - - [18/Aug/2020:16:06:27 +0000] "GET /blog HTTP/1.1" 500 - "http://localhost:5000/contact" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0"
+::1 - - [30/Aug/2020:10:17:59 +0000] "GET / HTTP/1.1" 500 1701 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+::1 - - [30/Aug/2020:10:18:53 +0000] "GET / HTTP/1.1" 500 1701 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+::1 - - [30/Aug/2020:10:23:59 +0000] "GET /contact HTTP/1.1" 500 - "http://localhost:5000/portfolio" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
+::1 - - [30/Aug/2020:10:25:51 +0000] "GET /contact HTTP/1.1" 500 - "http://localhost:5000/portfolio" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
